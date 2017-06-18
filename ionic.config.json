@@ -1,5 +1,11 @@
 {
   "name": "sidemenu",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+        "path": "/search",
+        "proxyUrl": "http://autocomplete.wunderground.com"
+    }
+]
 }

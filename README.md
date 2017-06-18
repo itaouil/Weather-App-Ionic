@@ -12,9 +12,9 @@ The stack used for the app is:
 
 ## **Development Cycle**
 
-1. **Setup MLAB and Ionic2**
+1. **Setup Ionic2**
 
-The storage used is mongoDB, but on the cloud. More precisely it has been used the sandbox free service offered by MLAB. Secondly we installed Ionic2 (offering the mobile friendly framework) and Cordova that simulates native functionalities of the device targeted
+We proceed by installing Ionic2 (offering the mobile friendly framework) and Cordova that simulates native functionalities of the device targeted
 
 2. **Create Ionic2 Components**
 
