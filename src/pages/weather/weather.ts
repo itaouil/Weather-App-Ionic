@@ -11,12 +11,14 @@ import { WeatherService } from "../../services/weather.service";
 
 export class WeatherPage implements OnInit{
 
+  public weather;
+
   constructor(private _weatherService: WeatherService) {}
 
   ngOnInit() {
     this._weatherService.getWeather("Boston", "MA")
       .subscribe(weather => {
-        console.log(weather);
+        this.weather = weather.current_observation;
       });
   }
 

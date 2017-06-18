@@ -24735,6 +24735,16 @@ ion-navbar.toolbar {
   color: #fff;
 }
 
+.location, .icon, .desc {
+  text-align: center;
+}
+
+.temp {
+  text-align: center;
+  font-size: 70px;
+  font-weight: normal;
+}
+
 .settings {
   background: #333b5b;
   color: #fff;
@@ -24748,4 +24758,14 @@ ion-navbar.toolbar {
 .weather {
   background: #333b5b;
   color: #fff;
+}
+
+.location, .icon, .desc {
+  text-align: center;
+}
+
+.temp {
+  text-align: center;
+  font-size: 70px;
+  font-weight: normal;
 }
