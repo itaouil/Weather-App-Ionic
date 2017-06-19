@@ -22,7 +22,8 @@
 
         <ion-list>
           <ion-item *ngFor="let result of results">
-            {{result.name}}
+            <span (click)="chooseCity(result)">{{result.name}}
+            </span>
           </ion-item>
         </ion-list>
 
@@ -60,7 +61,7 @@
           </ion-item>
 
           <ion-item>
-            <strong>Wind: </strong>{{weather.wind_mph}} Mph
+            <strong>Wind: </strong>{{weather.wind_kph}} kph
           </ion-item>
 
           <ion-item>

@@ -18,8 +18,8 @@ export class WeatherService {
     this.searchUrl = "http://localhost:8100/search/aq?query=";
   }
 
-  getWeather(city, state) {
-    return this._http.get(this.conditionsUrl + '/' + state + '/' + city + '.json')
+  getWeather(zmw) {
+    return this._http.get(this.conditionsUrl + '/zmw:' + zmw + '.json')
       .map(res => res.json());
   }
 

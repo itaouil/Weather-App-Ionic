@@ -55934,7 +55934,8 @@ var WeatherPage = (function () {
     }
     WeatherPage.prototype.ngOnInit = function () {
         var _this = this;
-        this._weatherService.getWeather("Boston", "MA")
+        this.getDefaultCity();
+        this._weatherService.getWeather(this.zmw)
             .subscribe(function (weather) {
             _this.weather = weather.current_observation;
         });
@@ -55946,15 +55947,28 @@ var WeatherPage = (function () {
             _this.results = res.RESULTS;
         });
     };
+    WeatherPage.prototype.chooseCity = function (city) {
+        var _this = this;
+        // Clear list
+        this.results = [];
+        this._weatherService.getWeather(city.zmw)
+            .subscribe(function (weather) {
+            _this.weather = weather.current_observation;
+        });
+    };
+    WeatherPage.prototype.getDefaultCity = function () {
+        this.zmw = "94125.1.99999";
+    };
     return WeatherPage;
 }());
 WeatherPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'weather',template:/*ion-inline-start:"/Users/dailand10/Desktop/Weather-App-Ionic/src/pages/weather/weather.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Weather</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="weather">\n\n  <ion-grid *ngIf="weather">\n\n    <ion-row>\n      <ion-col width-100>\n        <ion-list>\n          <ion-item>\n            <ion-label fixed>Enter City</ion-label>\n            <ion-input (keyup)="getQuery()" [(ngModel)]="searchStr" type="text" value=""></ion-input>\n          </ion-item>\n        </ion-list>\n\n        <ion-list>\n          <ion-item *ngFor="let result of results">\n            {{result.name}}\n          </ion-item>\n        </ion-list>\n\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col width-50 offset-25>\n        <h2 class="location">{{weather.display_location.full}}</h2>\n        <div class="icon">\n          <img src="{{weather.icon_url}}" alt="Weather Icon">\n        </div>\n        <h3 class="desc">{{weather.weather}}</h3>\n        <h1 class="temp">{{weather.temp_c}}&deg;</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col width-100>\n        <ion-list>\n          <ion-item>\n            <strong>Temp: </strong>{{weather.temperature_string}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Relative Humidity: </strong>{{weather.relative_humidity}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Dewpoint: </strong>{{weather.dewpoint_string}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Visibility: </strong>{{weather.visibility_mi}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Wind: </strong>{{weather.wind_mph}} Mph\n          </ion-item>\n\n          <ion-item>\n            <strong>Wind Direction: </strong>{{weather.wind_dir}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Heat Index: </strong>{{weather.heat_index_string}}\n          </ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dailand10/Desktop/Weather-App-Ionic/src/pages/weather/weather.html"*/
+        selector: 'weather',template:/*ion-inline-start:"/Users/dailand10/Desktop/Weather-App-Ionic/src/pages/weather/weather.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Weather</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="weather">\n\n  <ion-grid *ngIf="weather">\n\n    <ion-row>\n      <ion-col width-100>\n        <ion-list>\n          <ion-item>\n            <ion-label fixed>Enter City</ion-label>\n            <ion-input (keyup)="getQuery()" [(ngModel)]="searchStr" type="text" value=""></ion-input>\n          </ion-item>\n        </ion-list>\n\n        <ion-list>\n          <ion-item *ngFor="let result of results">\n            <span (click)="chooseCity(result)">{{result.name}}\n            </span>\n          </ion-item>\n        </ion-list>\n\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col width-50 offset-25>\n        <h2 class="location">{{weather.display_location.full}}</h2>\n        <div class="icon">\n          <img src="{{weather.icon_url}}" alt="Weather Icon">\n        </div>\n        <h3 class="desc">{{weather.weather}}</h3>\n        <h1 class="temp">{{weather.temp_c}}&deg;</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col width-100>\n        <ion-list>\n          <ion-item>\n            <strong>Temp: </strong>{{weather.temperature_string}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Relative Humidity: </strong>{{weather.relative_humidity}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Dewpoint: </strong>{{weather.dewpoint_string}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Visibility: </strong>{{weather.visibility_mi}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Wind: </strong>{{weather.wind_kph}} kph\n          </ion-item>\n\n          <ion-item>\n            <strong>Wind Direction: </strong>{{weather.wind_dir}}\n          </ion-item>\n\n          <ion-item>\n            <strong>Heat Index: </strong>{{weather.heat_index_string}}\n          </ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dailand10/Desktop/Weather-App-Ionic/src/pages/weather/weather.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_weather_service__["a" /* WeatherService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_weather_service__["a" /* WeatherService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_weather_service__["a" /* WeatherService */]) === "function" && _a || Object])
 ], WeatherPage);
 
+var _a;
 //# sourceMappingURL=weather.js.map
 
 /***/ }),
@@ -55988,8 +56002,8 @@ var WeatherService = (function () {
         this.conditionsUrl = 'http://api.wunderground.com/api/' + this.apiKey + '/conditions/q';
         this.searchUrl = "http://localhost:8100/search/aq?query=";
     }
-    WeatherService.prototype.getWeather = function (city, state) {
-        return this._http.get(this.conditionsUrl + '/' + state + '/' + city + '.json')
+    WeatherService.prototype.getWeather = function (zmw) {
+        return this._http.get(this.conditionsUrl + '/zmw:' + zmw + '.json')
             .map(function (res) { return res.json(); });
     };
     WeatherService.prototype.searchCities = function (searchStr) {
@@ -56000,9 +56014,10 @@ var WeatherService = (function () {
 }());
 WeatherService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], WeatherService);
 
+var _a;
 //# sourceMappingURL=weather.service.js.map
 
 /***/ }),
