@@ -10,6 +10,10 @@ The stack used for the app is:
 * HTML5
 * SCSS
 
+## Pic
+
+
+
 ## **Development Cycle**
 
 1. **Setup Ionic2**

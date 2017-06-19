@@ -4,10 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { WeatherPage } from '../pages/weather/weather';
-import { SettingsPage } from '../pages/settings/settings';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,10 +15,7 @@ import { WeatherService } from "../services/weather.service";
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage,
-    WeatherPage,
-    SettingsPage
+    WeatherPage
   ],
   imports: [
     BrowserModule,
@@ -31,10 +25,7 @@ import { WeatherService } from "../services/weather.service";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage,
-    WeatherPage,
-    SettingsPage
+    WeatherPage
   ],
   providers: [
     StatusBar,
