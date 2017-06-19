@@ -12,7 +12,7 @@ The stack used for the app is:
 
 ## Pic
 
-
+![alt](https://github.com/itaouil95/Weather-App-Ionic/blob/master/weather-app-pic.png)
 
 ## **Development Cycle**
 
